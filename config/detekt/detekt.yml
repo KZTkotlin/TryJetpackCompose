@@ -1,0 +1,52 @@
+# 業務で使用した設定のみ記載している
+# 再生性したい場合は、GradleのJavaバージョンをAmazonの17に変更した上で、./gradlew detektGenerateConfigを実行すれば再生成できるはず
+
+complexity:
+  # 1メソッドの行数
+  LongMethod:
+    active: true
+    # デフォルト60は厳しいので100に変更
+    threshold: 100
+  # 1メソッドの引数の数
+  LongParameterList:
+    # Composableではhostingで引数が多くなりがちなのでfalse
+    active: false
+  # 1ファイルの関数の数
+  TooManyFunctions:
+    # Composableを細かく分割するのは好ましいのでfalse
+    active: false
+
+naming:
+  FunctionNaming:
+    # Composableの命名慣習を許容するため、関数名が大文字始まりでも良しとする
+    functionPattern: '[a-zA-Z][a-zA-Z0-9]*'
+  TopLevelPropertyNaming:
+    # Compose ガイドラインではトップレベルの定数をキャメルケースで規定している
+    constantPattern: '[A-Z][A-Za-z0-9]*'
+
+style:
+  # Class内の諸々の順番を規定する
+  ClassOrdering:
+    active: true
+  # 実装中に使うコメント(TODO等)の禁止 TODOの状態でコミットする運用をしたいのでfalse
+  ForbiddenComment:
+    active: false
+  MagicNumber:
+    # Color(0xFFA6D7E)のような表記を許容する
+    ignorePropertyDeclaration: true
+  # 複数行のif文で中括弧を必須とする（自動生成になかったので手動追加）
+  MandatoryBracesIfStatements:
+    active: true
+  # 複数行のfor,while文で中括弧を必須とする
+  MandatoryBracesLoops:
+    active: true
+  # lambda式で複数行の場合、itの使用を禁止する
+  MultilineLambdaItParameter:
+    active: true
+  UnusedPrivateMember:
+    # ComposableのPreviewを不要なものと見做されないようにする（自動生成になかったので手動追加）
+    ignoreAnnotated:
+      - 'Preview'
+  # からコレクション生成を"emptyXXX()"で記載することを必須とする
+  UseEmptyCounterpart:
+    active: true

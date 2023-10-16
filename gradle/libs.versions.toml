@@ -1,0 +1,127 @@
+[versions]
+androidx-appcompat = "1.6.1"
+androidx-core = "1.12.0"
+lifecycle = "2.6.2"
+androidx-splash = "1.0.1"
+compose = "1.7.2"
+navigation-compose = "2.7.3"
+hilt-navigation-compose = "1.0.0"
+compose-bom = "2023.09.01"
+compose-material = "1.1.2"
+compose-ui = "1.5.1"
+retrofit2 = "2.9.0"
+moshi = "1.14.0"
+okhttp = "4.11.0"
+coroutines = "1.7.3"
+hilt = "2.48"
+compose-lottie = "6.1.0"
+timber = "5.0.1"
+junit = "4.13.2"
+kotlin-test-junit = "1.9.10"
+androidx-test-junit = "1.1.5"
+androidx-test-espresso = "3.5.1"
+agp = "8.1.1"
+org-jetbrains-kotlin-android = "1.8.10"
+material = "1.9.0"
+detekt = "1.23.1"
+retrofit-gson = "2.9.0"
+
+[libraries]
+# androidx
+androidx-appcompat = { module = "androidx.appcompat:appcompat", version.ref = "androidx-appcompat" }
+androidx-core = { module = "androidx.core:core-ktx", version.ref = "androidx-core" }
+androidx-lifecycle = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version.ref = "lifecycle" }
+androidx-splash = { module = "androidx.core:core-splashscreen", version.ref = "androidx-splash" }
+
+# compose
+compose-activity = { module = "androidx.activity:activity-compose", version.ref = "compose" }
+compose-navigation = { module = "androidx.navigation:navigation-compose", version.ref = "navigation-compose" }
+compose-hilt = { module = "androidx.hilt:hilt-navigation-compose", version.ref = "hilt-navigation-compose" }
+compose-viewmodel = { module = "androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "lifecycle" }
+compose-lifecycle = { module = "androidx.lifecycle:lifecycle-runtime-compose", version.ref = "lifecycle" }
+compose-bom = { module = "androidx.compose:compose-bom", version.ref = "compose-bom" }
+compose-material = { module = "androidx.compose.material3:material3", version.ref = "compose-material" }
+compose-ui-tooling = { module = "androidx.compose.ui:ui-tooling", version.ref = "compose-ui" }
+compose-ui-tooling-preview = { module = "androidx.compose.ui:ui-tooling-preview", version.ref = "compose-ui" }
+
+# HTTP Connection
+retrofit2 = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit2" }
+retrofit2-converter-moshi = { module = "com.squareup.retrofit2:converter-moshi", version.ref = "retrofit2" }
+moshi = { module = "com.squareup.moshi:moshi", version.ref = "moshi" }
+moshi-kotlin = { module = "com.squareup.moshi:moshi-kotlin", version.ref = "moshi" }
+okhttp-logging-interceptor = { module = "com.squareup.okhttp3:logging-interceptor", version.ref = "okhttp" }
+
+# 非同期処理
+coroutines = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "coroutines" }
+coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "coroutines" }
+
+# DI
+hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hilt" }
+hilt-kapt = { module = "com.google.dagger:hilt-android-compiler", version.ref = "hilt" }
+
+# アニメーション
+compose-lottie = { module = "com.airbnb.android:lottie-compose", version.ref = "compose-lottie" }
+
+# ログ出力
+timber = { module = "com.jakewharton.timber:timber", version.ref = "timber" }
+
+# Test
+test-junit = { module = "junit:junit", version.ref = "junit" }
+kotlin-test-junit = { module = "org.jetbrains.kotlin:kotlin-test-junit", version.ref = "kotlin-test-junit" }
+androidx-test-junit = { module = "androidx.test.ext:junit", version.ref = "androidx-test-junit" }
+androidx-test-espresso = { module = "androidx.test.espresso:espresso-core", version.ref = "androidx-test-espresso" }
+compose-ui-test-manifest = { module = "androidx.compose.ui:ui-test-manifest", version.ref = "compose-ui" }
+compose-ui-test-junit4 = { module = "androidx.compose.ui:ui-test-junit4", version.ref = "compose-ui" }
+material = { group = "com.google.android.material", name = "material", version.ref = "material" }
+
+# Lint
+detekt-formatting = { module = "io.gitlab.arturbosch.detekt:detekt-formatting", version.ref = "detekt" }
+
+# GSON
+retrofit-gson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "retrofit-gson" }
+
+[plugins]
+com-android-library = { id = "com.android.library", version.ref = "agp" }
+org-jetbrains-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "org-jetbrains-kotlin-android" }
+detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
+
+[bundles]
+androidx-base = ["androidx-core", "androidx-lifecycle"]
+androidx-compose = [
+    "compose-activity",
+    "compose-navigation",
+    "compose-hilt",
+    "compose-viewmodel",
+    "compose-lifecycle",
+    "compose-bom",
+    "compose-material",
+    "compose-ui-tooling",
+    "compose-ui-tooling-preview",
+]
+
+http = [
+    "retrofit2",
+    "retrofit2-converter-moshi",
+    "moshi",
+    "moshi-kotlin",
+    "okhttp-logging-interceptor",
+]
+
+test-base = ["test-junit", "kotlin-test-junit"]
+test-android = ["androidx-test-junit", "compose-ui-test-junit4"]
+debug-compose = ["compose-ui-tooling", "compose-ui-test-manifest"]
+
+test-all = [
+    "androidx-test-junit",
+    "kotlin-test-junit",
+    "compose-ui-test-junit4",
+    "coroutines-test",
+    "test-junit",
+]
+
+androidx-test-all = [
+    "androidx-test-junit",
+    "androidx-test-espresso",
+    "compose-ui-test-junit4",
+    "compose-ui-test-manifest",
+]
