@@ -39,7 +39,11 @@ dependencies {
     implementation(project(":model"))
 
     /** HTTP Connection */
-    implementation(libs.retrofit2)
+    implementation(libs.bundles.http)
+
+    /** DI */
+    implementation(libs.hilt.android)
+    kapt(libs.hilt.kapt)
 
     /** Timber */
     implementation(libs.timber)
