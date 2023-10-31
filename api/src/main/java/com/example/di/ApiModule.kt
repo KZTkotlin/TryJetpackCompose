@@ -38,16 +38,23 @@ object ApiModule {
 
     @Provides
     @Singleton
-    fun provideRetrofit(
-        okHttpClient: OkHttpClient,
-    ): Retrofit {
+    fun provideMoshi(): MoshiConverterFactory {
         val moshi = Moshi.Builder()
             .add(KotlinJsonAdapterFactory())
             .build()
+        return MoshiConverterFactory.create(moshi)
+    }
+
+    @Provides
+    @Singleton
+    fun provideRetrofit(
+        okHttpClient: OkHttpClient,
+        moshiConverterFactory: MoshiConverterFactory,
+    ): Retrofit {
         return Retrofit.Builder()
             .client(okHttpClient)
             .baseUrl("https://qiita.com/api/v2/")
-            .addConverterFactory(MoshiConverterFactory.create(moshi))
+            .addConverterFactory(moshiConverterFactory)
             .build()
     }
 
